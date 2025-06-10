@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import './App.css'
+import MovieList from './MovieList'
 
-const App = () => {
-  return (
-    <div className="App">
-    
-    </div>
+export default function App(){
+  return(
+   <div>
+    <h1>Check the movie:</h1>
+    <MovieList />
+   </div>
   )
 }
-
-export default App

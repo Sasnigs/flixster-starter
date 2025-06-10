@@ -1,0 +1,15 @@
+.movie-card{
+   display: flex;
+  width: 250px; /* set the width of the card */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.movie-card img{
+    width: 100%; /* make the image full-width */
+  height: 150px; /* set the height of the image */
+  object-fit: cover; /* make the image cover the entire area */
+}
