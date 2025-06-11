@@ -1,9 +1,12 @@
 import "./modal.css";
 
-export default function Modal({ moviesToShow, onClose }) {
+export default function Modal({ moviesToShow, onClose, isOpen }) {
   return (
     <>
-      <div className="modal-overlay" onClick={onClose}>
+      <div
+        className={`modal-overlay ${isOpen ? "show" : ""}`}
+        onClick={onClose}
+      >
         <div className="modal-content" onClick={(e) => e.stopPropagation()}>
           <h2>{moviesToShow.title}</h2>
           <img
