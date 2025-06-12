@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -25,4 +25,8 @@
   .search-bar form {
     flex-direction: column;
   }
+} */
+.header-container {
+      box-shadow: 0px 0px 5px white; 
+      padding-bottom: 1rem;   
 }

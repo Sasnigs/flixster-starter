@@ -1,9 +1,10 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: gray;
-}
+  background-color: black;
 
+}
+/* 
 button {
   background-color: #282c34;
   color: white;
@@ -16,4 +17,4 @@ button {
 button:hover {
   background-color: #777;
   color: white;
-}
+} */

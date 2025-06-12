@@ -8,7 +8,8 @@ export default function MovieList({ moviesToShow, loadMoreMovies }) {
 
   return (
     <>
-      <div className="movie-list">
+    <div className="movieList-container">
+         <div className="movie-list">
         {moviesToShow &&
           moviesToShow.map((movie, index) => (
             <MovieCard
@@ -28,6 +29,8 @@ export default function MovieList({ moviesToShow, loadMoreMovies }) {
       <button className="load-more" onClick={loadMoreMovies}>
         Load more..
       </button>
+    </div>
+     
     </>
   );
 }

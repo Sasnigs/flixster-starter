@@ -1,19 +1,18 @@
 import "./App.css";
 import MovieList from "./MovieList";
 import Header from "./header";
-import Modal from "./modal";
 import { useState, useEffect } from "react";
+import Footer from "./footer";
 
 export default function App() {
   const [movieState, setMovieState] = useState(null);
   const [page, setPage] = useState(1);
   const [searchState, setSearchState] = useState(null);
-  const [isModalOpen, setisModalOpen] = useState(false);
 
   // API CALL
   const API_KEY = import.meta.env.VITE_API_KEY;
   const BASE_URL = "https://api.themoviedb.org/3";
-
+  
   async function getPopularMovies(page) {
     const res = await fetch(`${BASE_URL}/movie/now_playing?page=${page}`, {
       headers: {
@@ -26,31 +25,32 @@ export default function App() {
     return data;
   }
 
-  useEffect(() => {
+  useEffect(()=> {
     getPopularMovies(page)
-      .then((data) => setMovieState(data.results))
-      .catch((err) => console.error("Error fetching movies:", err));
-  }, [page]);
+    .then(data => {
+      if (page ===1) {
+        setMovieState(data.results)
+      } else{
+        setMovieState(prev => [...prev, ...data.results])
+      }
+    })
+     .catch((err) => console.error("Error fetching more movies:", err));
+  }, [page])
 
   function loadMoreMovies() {
-    const newPageNumber = page + 1
-
-    getPopularMovies(newPageNumber)
-      .then((data) => setMovieState([...movieState, ...data.results]))
-      .catch((err) => console.error("Error fetching more movies:", err));
-
-    setPage(newPageNumber)
+    setPage(page +1 )
   }
 
   return (
     <>
-      <div>
-        <Header setSearchState={setSearchState} />
-        <MovieList
-          moviesToShow={searchState === null ? movieState : searchState}
-          loadMoreMovies={loadMoreMovies}
-        />
+      <div className="header-container">
+        <Header movieState={movieState} setMovieState={setMovieState} setSearchState={setSearchState} />
       </div>
+      <MovieList
+        moviesToShow={searchState === null ? movieState : searchState}
+        loadMoreMovies={loadMoreMovies}
+      />
+      <Footer />
     </>
   );
 }

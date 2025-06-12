@@ -1,11 +1,12 @@
 .movie-list{
     display: flex;
     justify-content: center;
-    /* flex-direction: column; */
     flex-wrap: wrap;
-    /* width: 300px; */
     gap: 20px;
+    padding-top: 40px;
+   
 }
+
 .load-more{
    align-content: center;
 }

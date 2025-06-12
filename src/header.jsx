@@ -1,48 +1,31 @@
-import "./header.css";
-import { useState } from "react";
+import './header.css'
+import Search from "./search";
 
-const API_KEY = import.meta.env.VITE_API_KEY;
-
-export default function Header({ setSearchState }) {
-  // 5. use Parent setSearchState to update search state
-  const [searchVal, setSearchVal] = useState("");
-  function search(e) {
-    e.preventDefault();
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(
-      searchVal
-    )}&page=${1}`;
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NjFhNmM2MGQ3OTQ1NTA2MzY5ODAyNzVmNmI5MDEwMyIsIm5iZiI6MTc0OTUzNDEwNS42LCJzdWIiOiI2ODQ3YzU5OTI0YzM5ZWY0ZTUxZWFmMDgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.Tw_RWHG1ccwOFzJdJL4ajAyA5i_qiVecj-qXFkKX9_g",
-      },
-    };
-
-    fetch(url, options)
-      .then((res) => res.json())
-      .then((json) => setSearchState(json.results))
-      .catch((err) => console.error(err));
-  }
-  const UpdateSearch = (e) => setSearchVal(e.target.value);
-
-  const clearInput = () => {
-    setSearchState(null);
-    setSearchVal("");
-  };
-  return (
+export default function Header({ setSearchState, movieState, setMovieState}){
+  function SortMovies(value){
+    let sortedMovies = [...movieState]
+   if (value.toLowerCase() === "title"){
+       sortedMovies.sort((a, b) => a.title.localeCompare( b.title))
+       setMovieState(sortedMovies)
+     }
+     else if (value === 'Most recent'){
+      sortedMovies.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
+         setMovieState(sortedMovies);
+   }
+     else if (value === 'Rating'){
+      sortedMovies.sort((a, b) => b.vote_average - a.vote_average)
+       setMovieState(sortedMovies)
+      }
+    }
+  return(
     <>
-      <div className="header">
-        <h1>House of Movies</h1>
-        <div style={{ display: "flex" }}>
-          <form onSubmit={(e) => search(e)}>
-            <input value={searchVal} name="query" onChange={UpdateSearch} />
-            <button type="submit">Search</button>
-          </form>
-          <button onClick={clearInput}>Now Playing</button>
-        </div>
+      <div className='header'>
+         <h1 className="header-name">House Of</h1>
+          <img src="/movie.png" alt="" />
       </div>
+      <Search setSearchState={setSearchState} SortMovies={SortMovies} />
     </>
-  );
+  )
 }
+
+
