@@ -8,29 +8,30 @@ export default function MovieList({ moviesToShow, loadMoreMovies }) {
 
   return (
     <>
-    <div className="movieList-container">
-         <div className="movie-list">
-        {moviesToShow &&
-          moviesToShow.map((movie, index) => (
-            <MovieCard
-              key={index}
-              openModal={() => setcurrentMovie(movie)}
-              movieObj={movie}
-            />
-          ))}
+      <div className="movieList-container">
+        <div className="movie-list">
+          {moviesToShow &&
+            moviesToShow.map((movie, index) => (
+              <MovieCard
+                key={index}
+                openModal={() => setcurrentMovie(movie)}
+                movieObj={movie}
+              />
+            ))}
+        </div>
+        {currentMovie.title && (
+          <Modal
+            isOpen={true}
+            moviesToShow={currentMovie}
+            onClose={() => setcurrentMovie({})}
+          />
+        )}
       </div>
-      {currentMovie.title && (
-        <Modal
-          isOpen={true}
-          moviesToShow={currentMovie}
-          onClose={() => setcurrentMovie({})}
-        />
-      )}
-      <button className="load-more" onClick={loadMoreMovies}>
-        Load more..
-      </button>
-    </div>
-     
+      <div className="load-more" >
+        <button onClick={loadMoreMovies}>
+          Load more..
+        </button>
+      </div>
     </>
   );
 }

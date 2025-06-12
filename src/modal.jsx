@@ -17,15 +17,16 @@ export default function Modal({ moviesToShow, onClose, isOpen }) {
     const data = await res.json();
     return data;
   }
-  
-   useEffect(() => {
-      getMovieDetails(moviesToShow.id)
-        .then((data) => setmovieDetails(data))
-        .catch((err) => console.error("Error fetching moviesDetials:", err));
-    }, [isOpen, moviesToShow]);
-    
-    if(!isOpen || !movieDetails) return null
-    console.log(movieDetails)
+
+  useEffect(() => {
+    getMovieDetails(moviesToShow.id)
+      .then((data) => setmovieDetails(data))
+      .catch((err) => console.error("Error fetching moviesDetials:", err));
+  }, [isOpen, moviesToShow]);
+
+  if (!isOpen || !movieDetails) return null;
+  console.log(movieDetails);
+
   return (
     <>
       <div
@@ -38,9 +39,17 @@ export default function Modal({ moviesToShow, onClose, isOpen }) {
             src={`https://image.tmdb.org/t/p/w500${moviesToShow.backdrop_path}`}
             alt={moviesToShow.title}
           />
-          <p><strong>Release Date:</strong> {moviesToShow.release_date}</p>
-          <p>{moviesToShow.overview}</p>
-          <p><strong>Genre:</strong>  {movieDetails.genres[0].name}</p>
+          <p>
+            <strong>Runtime:</strong> {movieDetails.runtime}
+          </p>
+          <p>
+            <strong>Release Date:</strong> {moviesToShow.release_date}
+          </p>
+          <p className="overview">{moviesToShow.overview}</p>
+
+          <p>
+            <strong>Genre:</strong> {movieDetails.genres[0].name}
+          </p>
           <button onClick={onClose}>Close</button>
         </div>
       </div>

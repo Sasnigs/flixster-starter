@@ -1,5 +1,5 @@
 import './header.css'
-import Search from "./search";
+import Search from "./Search";
 
 export default function Header({ setSearchState, movieState, setMovieState}){
   function SortMovies(value){
