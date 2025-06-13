@@ -17,10 +17,9 @@ export default function MovieCard({ movieObj, openModal }) {
     <>
       <div className="movie-card" onClick={openModal}>
         <div className="image-container">
-          {/* {" "} */}
           <img
             src={`https://image.tmdb.org/t/p/w500/${movieObj.poster_path}`}
-            alt=""
+            alt={`${movieObj.title} Image`}
           />
         </div>
         <div className="movie-info">
