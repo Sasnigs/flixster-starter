@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 export default function Modal({ moviesToShow, onClose, isOpen }) {
   const [movieDetails, setmovieDetails] = useState(null);
+  const [Trailer, setTrailer] = useState(null);
   const API_KEY = import.meta.env.VITE_API_KEY;
   const BASE_URL = "https://api.themoviedb.org/3";
 
@@ -17,6 +18,24 @@ export default function Modal({ moviesToShow, onClose, isOpen }) {
     const data = await res.json();
     return data;
   }
+  async function getTrailerId(id) {
+    const res = await fetch(`${BASE_URL}/movie/${id}/videos`, {
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${API_KEY}`,
+      },
+    });
+    if (!res.ok) throw new Error("Failed to fetch movies");
+    const data = await res.json();
+     console.log(data)
+    return data;
+  }
+  useEffect(() => {
+    getTrailerId(moviesToShow.id)
+      .then((data) => setTrailer(data?.results?.find(t => t.type === "Trailer" && t.site === "YouTube")))
+      .catch((err) => console.error("Error fetching moviesDetials:", err));
+  }, [isOpen, setTrailer]);
+
 
   useEffect(() => {
     getMovieDetails(moviesToShow.id)
@@ -25,7 +44,6 @@ export default function Modal({ moviesToShow, onClose, isOpen }) {
   }, [isOpen, moviesToShow]);
 
   if (!isOpen || !movieDetails) return null;
-  console.log(movieDetails);
 
   return (
     <>
@@ -40,7 +58,7 @@ export default function Modal({ moviesToShow, onClose, isOpen }) {
             alt={moviesToShow.title}
           />
           <p>
-            <strong>Runtime:</strong> {movieDetails.runtime}
+            <strong>Runtime:</strong> {movieDetails.runtime} mins
           </p>
           <p>
             <strong>Release Date:</strong> {moviesToShow.release_date}
@@ -50,6 +68,19 @@ export default function Modal({ moviesToShow, onClose, isOpen }) {
           <p>
             <strong>Genre:</strong> {movieDetails.genres[0].name}
           </p>
+          {
+            <iframe
+              width="560"
+              height="315"
+              src={`https://www.youtube.com/embed/${Trailer.key}?autoplay=1`}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; 
+              clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            ></iframe>
+          }
           <button onClick={onClose}>Close</button>
         </div>
       </div>
