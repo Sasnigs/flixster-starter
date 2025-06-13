@@ -20,7 +20,7 @@ export default function Header({ setSearchState, movieState, setMovieState}){
   return(
     <>
       <div className='header'>
-         <h1 className="header-name">House Of</h1>
+         <h1 className="header-name">Flopbusters</h1>
           <img src="/movie.png" alt="" />
       </div>
       <Search setSearchState={setSearchState} SortMovies={SortMovies} />

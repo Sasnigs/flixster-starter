@@ -27,7 +27,6 @@ export default function Modal({ moviesToShow, onClose, isOpen }) {
     });
     if (!res.ok) throw new Error("Failed to fetch movies");
     const data = await res.json();
-     console.log(data)
     return data;
   }
   useEffect(() => {
