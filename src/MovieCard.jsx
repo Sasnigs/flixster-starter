@@ -1,16 +1,24 @@
 import { useState } from "react";
 import "./movieCard.css";
 
-export default function MovieCard({ movieObj, openModal }) {
-  const [Liked, setLiked] = useState(false);
-  const [watched, setwatched] = useState(false);
+export default function MovieCard({ movieObj, openModal, setMovieState, moviesToShow }) {
   function toggleLike(e) {
     e.stopPropagation();
-    setLiked((prev) => !prev);
+    const updatedData = moviesToShow.map(item =>
+        item.id === movieObj.id
+        ? { ...item, isLiked: !item.isLiked }
+        : item
+    );
+    setMovieState(updatedData);
   }
-  function toggleWatched(e) {
+   function toggleWatched(e) {
     e.stopPropagation();
-    setwatched((prev) => !prev);
+    const updatedData = moviesToShow.map(item =>
+        item.id === movieObj.id
+        ? { ...item, isWatched: !item.isWatched }
+        : item
+    );
+    setMovieState(updatedData);
   }
 
   return (
@@ -29,10 +37,10 @@ export default function MovieCard({ movieObj, openModal }) {
 
         <div className="fav-watch">
           <div onClick={toggleLike}>
-            <i className={Liked ? "fas fa-heart" : "far fa-heart"}></i>
+            <i className={movieObj.isLiked ? "fas fa-heart" : "far fa-heart"}></i>
           </div>
           <div onClick={toggleWatched}>
-            <i className={watched ? "fas fa-eye-slash" : "fas fa-eye"}></i>
+            <i className={movieObj.isWatched ? "fas fa-eye-slash" : "fas fa-eye"}></i>
           </div>
         </div>
       </div>

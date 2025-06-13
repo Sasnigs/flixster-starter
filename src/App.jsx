@@ -22,14 +22,27 @@ export default function App() {
     });
     if (!res.ok) throw new Error("Failed to fetch movies");
     const data = await res.json();
+
     return data;
+  }
+  function updateMovieCard(value){
+    let indexToReplace = movieState.findIndex(obj => obj.id === value.id)
+    let newMovie = [...movieState]
+    console.log("updateMovieCard")
+    console.log(newMovie)
+    newMovie[indexToReplace] = value
+    console.log(newMovie)
   }
 
   useEffect(()=> {
     getPopularMovies(page)
     .then(data => {
       if (page ===1) {
-        setMovieState(data.results)
+        let updateMyData = data?.results
+        updateMyData = updateMyData.map(item => ( 
+          ({...item, isLiked: false, isWatched: false })
+        ))
+        setMovieState(updateMyData)
       } else{
         setMovieState(prev => [...prev, ...data.results])
       }
@@ -40,7 +53,6 @@ export default function App() {
   function loadMoreMovies() {
     setPage(page +1 )
   }
-
   return (
     <>
       <div className="header-container">
@@ -48,7 +60,9 @@ export default function App() {
       </div>
       <MovieList
         moviesToShow={searchState === null ? movieState : searchState}
-        loadMoreMovies={loadMoreMovies}
+        loadMoreMovies={loadMoreMovies} 
+        updateMovieCard= { updateMovieCard}
+        setMovieState={setMovieState}
       />
       <Footer />
     </>

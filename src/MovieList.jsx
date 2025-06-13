@@ -3,7 +3,7 @@ import "./movieList.css";
 import Modal from "./modal";
 import { useState } from "react";
 
-export default function MovieList({ moviesToShow, loadMoreMovies }) {
+export default function MovieList({ moviesToShow, loadMoreMovies,  updateMovieCard, setMovieState }) {
   const [currentMovie, setcurrentMovie] = useState({});
 
   return (
@@ -16,6 +16,9 @@ export default function MovieList({ moviesToShow, loadMoreMovies }) {
                 key={index}
                 openModal={() => setcurrentMovie(movie)}
                 movieObj={movie}
+                updateMovieCard = { updateMovieCard}
+                setMovieState={setMovieState}
+                moviesToShow={moviesToShow}
               />
             ))}
         </div>
