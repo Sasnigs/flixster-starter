@@ -4,7 +4,7 @@ Submitted by: Osasenaga Obaseki
 
 Estimated time spent: 40-50 hours spent in total
 
-Deployed Application (**required**): [Flixster Deployed Site](ADD_LINK_HERE)
+Deployed Application (**required**): [Flixster Deployed Site](https://flixster-starter-mi93.onrender.com/)
 
 ### Application Features
 
@@ -60,9 +60,9 @@ Deployed Application (**required**): [Flixster Deployed Site](ADD_LINK_HERE)
     - [ x] Movie grid
     - [ x] Footer section
     - [ x] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: To ease the grading process, please use the [color contrast checker](https://webaim.org/resources/contrastchecker/) to demonstrate to the grading team that text and background colors on your website have appropriate contrast. The Contrast Ratio should be above 4.5:1 and should have a green box surrounding it. 
-  - [ ] **Deployment**
-  - [ ] Website is deployed via Render.
-  - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: For ease of grading, please use the deployed version of your website when creating your walkthrough. 
+  - [x ] **Deployment**
+  - [ x] Website is deployed via Render.
+  - [ x] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: For ease of grading, please use the deployed version of your website when creating your walkthrough. 
 
 #### STRETCH FEATURES
 
@@ -100,28 +100,31 @@ Deployed Application (**required**): [Flixster Deployed Site](ADD_LINK_HERE)
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. Ensure your walkthrough showcases the presence and/or functionality of all features you implemented above (check them off as you film!). Pay attention to any **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS** checkboxes listed above to ensure graders see the full functionality of your website! (🚫 Remove this paragraph after adding walkthrough video)
+`TODO://` 
 
-`ADD_EMBEDDED_CODE_HERE`
+`ADD_EMBEDDED_CODE_HERE` https://www.loom.com/share/57e287f9769e48ca8cd734734b6f067a?sid=02535da8-f792-47f5-a25b-110d05d92f9a
 
 ### Reflection
 
-* Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
+* Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete? It did. It was a bit overwhelming so to say.
 
 Add your response here
 
-* If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
+* If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc. 
   
-Add your response here
+Maybe I could have added a filter by genre and recommendation and the last stretch feature.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
 Add your response here
+Majority did side bar so yea could have done that.
 
 ### Open-source libraries used
 
 - Add any links to open-source libraries used in your project.
+No
 
 ### Shout out
 
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+Shout out to Terrence wellington and hayzeus and Bob
