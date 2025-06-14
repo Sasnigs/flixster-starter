@@ -16,7 +16,7 @@ export default function MovieList({ moviesToShow, loadMoreMovies,  updateMovieCa
                 key={index}
                 openModal={() => setcurrentMovie(movie)}
                 movieObj={movie}
-                updateMovieCard = { updateMovieCard}
+
                 setMovieState={setMovieState}
                 moviesToShow={moviesToShow}
               />

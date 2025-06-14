@@ -25,14 +25,6 @@ export default function App() {
 
     return data;
   }
-  function updateMovieCard(value){
-    let indexToReplace = movieState.findIndex(obj => obj.id === value.id)
-    let newMovie = [...movieState]
-    console.log("updateMovieCard")
-    console.log(newMovie)
-    newMovie[indexToReplace] = value
-    console.log(newMovie)
-  }
 
   useEffect(()=> {
     getPopularMovies(page)
@@ -61,7 +53,6 @@ export default function App() {
       <MovieList
         moviesToShow={searchState === null ? movieState : searchState}
         loadMoreMovies={loadMoreMovies} 
-        updateMovieCard= { updateMovieCard}
         setMovieState={setMovieState}
       />
       <Footer />

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./movieCard.css";
 
 export default function MovieCard({ movieObj, openModal, setMovieState, moviesToShow }) {

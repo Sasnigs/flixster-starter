@@ -11,20 +11,21 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.75);
+  overflow-y: auto;
 }
 .modal-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-height: 80vh;
+  max-height: 90vh;
   overflow-y: auto;
   background-color: #fff;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
-  max-width: 550px;
+  width: 90%;
+  max-width: 600px;
   transform: translateY(-30px);
   opacity: 0;
   transition: transform 0.3s ease, opacity 0.3s ease;
